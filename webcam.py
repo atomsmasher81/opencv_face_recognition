@@ -1,4 +1,4 @@
-import cv2
+import cv2.cv2 as cv2
 import os
 
 def create_dir(person_counter):

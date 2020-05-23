@@ -1,9 +1,9 @@
 import recogniser as rg
 import webcam as wb
 import os
-import cv2
+import cv2.cv2 as cv2
 
-data_folder_path = "C:/Users/User/PycharmProjects/opencv_face_recognition"
+data_folder_path = "/mnt/54C615C6C615A8EE/my_projects/security_cam_web_app/face_recognizer"
 
 subjects  = ["",]
 person_counter = 1
@@ -32,12 +32,12 @@ wb.take_attendance()
 test_image = os.listdir(data_folder_path + '/test/')
 print(test_image)
 for x in test_image:
-    test = cv2.imread(x)
+    test = cv2.imread(data_folder_path + '/test/'+x)
     print(x)
 
 test1 =cv2.imread(data_folder_path+'/test/' + x)
-predict = rg.predict(test1,subjects,labels)
-
+predict = rg.predict(test1,subjects) #,labels)
+cv2.imwrite('predict.jpg',predict)
 print("Prediction complete")
 
-rg.display_result(test)
+rg.display_result(predict)

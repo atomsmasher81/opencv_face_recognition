@@ -1,6 +1,6 @@
 # let's get this bread
 
-import cv2
+import cv2.cv2 as cv2
 import numpy as np
 import os
 
@@ -120,6 +120,7 @@ def predict(test_img,subjects):
     # predict the image using our face recognizer
     label, confidence = FaceRecognizer.face_recognizer.predict(face)
     # get name of respective label returned by face recognizer
+    print(subjects,label)
     label_text = subjects[label]
 
     # draw a rectangle around face detected
@@ -168,7 +169,7 @@ class  FaceRecognizer:
 
 
 def display_result(img):
-    cv2.imshow(cv2.resize(img, (400, 500)))
+    cv2.imshow('result',img)#,cv2.resize(img,(400, 500)))
     cv2.waitKey(0)
     cv2.destroyAllWindows()
     cv2.waitKey(1)
